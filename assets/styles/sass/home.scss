@@ -1,0 +1,63 @@
+// --------------------------------------------------- Variables
+$primary-color: #c4def7;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $primary-color;
+}
+
+.container {
+    max-width: 1124px;
+    height: 100vh;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    gap: 16px;
+    background-color: rgba(0,0,0,.5);
+
+    .search {
+        .quick-access {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 14%);
+            grid-template-rows: repeat(auto-fill, minmax(min-height, max-height));
+            gap: 16px;
+            align-content: start;
+            background-color: aqua;
+
+            a {
+                width: 100%;
+                aspect-ratio: 1;
+                color: white;
+                background-color: crimson;
+            }
+        }
+    }
+    
+    div {
+        &:first-child {
+            background-color: red;
+        }
+        &:nth-child(2) {
+            background-color: olive;
+        }
+        &:last-child {
+            background-color: blue;
+        }
+    }
+}
+
+a.reference {
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: dodgerblue;
+}
