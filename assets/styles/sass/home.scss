@@ -3,7 +3,12 @@ $background-color: #c4def7;
 $primary-color: #fff;
 $checkbox-border-color: #3cc367;
 $checkbox-background-color: #cef0d9;
-$task-input-color: #49557a;
+$task-input-color: #9aa8bc;
+
+@mixin grid-full-col-placement($grid-row...) {
+    grid-column: $grid-row;
+    grid-row: 1/3;
+}
 
 @font-face {
     font-family: "vazir";
@@ -35,19 +40,21 @@ body {
     margin: 0 auto;
     display: grid;
     grid-template-columns: calc(25% - 16px) calc(50% - 16px) calc(25% - 16px);
+    grid-template-rows: 15% 1fr;
     justify-content: center;
     gap: 16px;
 
     > * {
         direction: rtl;
+        border-radius: 24px;
         background-color: $primary-color;
     }
 }
 
 .todo-list {
+    @include grid-full-col-placement(3/4);
     display: grid;
     grid-template-rows: auto 1fr auto;
-    border-radius: 24px;
 
     h2 {
         padding: 0.5rem;
@@ -65,7 +72,9 @@ body {
     }
 
     .task {
-        padding: 1rem 0.5rem;
+        height: max-content;
+        // padding: 1rem 0.5rem;
+        padding: 4px;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
@@ -97,9 +106,11 @@ body {
             background-color: $checkbox-background-color;
         }
 
+        .task-title {
+            overflow: hidden;
+        }
+
         .buttons-wrapper {
-            width: 100px;
-            height: 100%;
             display: flex;
             flex-direction: row-reverse;
             gap: 5px;
@@ -108,16 +119,16 @@ body {
                 width: 25px;
                 aspect-ratio: 1;
                 display: block;
+                cursor: pointer;
                 background: no-repeat center center / 90%;
-
             }
-            
+
             .delete-task {
-                background-image: url("./../../images/delete-icon.png") ;
+                background-image: url("./../../images/delete-icon.png");
             }
 
             .edit-task {
-                background-image: url("./../../images/edit-icon.png") ;
+                background-image: url("./../../images/edit-icon.png");
             }
         }
     }
@@ -135,7 +146,8 @@ body {
             top: 50%;
             left: 1rem;
             transform: translate(50%, -50%);
-            background: url("./../../images/plus-icon.png") no-repeat center center / cover;
+            background: url("./../../images/plus-icon.png") no-repeat center
+                center / cover;
         }
     }
 
@@ -158,27 +170,34 @@ body {
     }
 }
 
-.search {
-    .quick-access {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, calc((100% / 6) - 10px));
-        gap: 10px;
-        align-content: start;
-        place-content: center;
-        background-color: aqua;
+// .search {
+// }
 
-        a {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 1rem;
-            display: grid;
-            place-content: center;
-            border: 1px solid black;
-            color: white;
-            background-color: crimson;
+.quick-access {
+    height: max-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc((100% / 6) - 10px));
+    gap: 10px;
+    justify-content: center;
+    align-content: start;
+    background-color: transparent;
+
+    a {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 1rem;
+        background: $primary-color no-repeat center center / 30%;
+
+        &:not(:first-child) {
+            background-image: url("./../../images/plus-icon.png");
         }
     }
 }
+
+.time-and-weather {
+    @include grid-full-col-placement(1/2);
+}
+
 a.reference {
     padding: 10px 20px;
     position: absolute;
