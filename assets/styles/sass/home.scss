@@ -4,10 +4,13 @@ $primary-color: #fff;
 $checkbox-border-color: #3cc367;
 $checkbox-background-color: #cef0d9;
 $task-input-color: #9aa8bc;
+$task-title-color: #333e67;
 $search-box-background: #f2f3f5;
 $search-btn-background: #3d518f;
 $google-search-placeholder: #b1b1b2;
 $google-search-text-color: #4f6199;
+$quick-access-border-color: #4f99c2;
+$quick-access-logo-color: #1e2a58;
 
 @mixin grid-full-col-placement($grid-row...) {
     grid-column: $grid-row;
@@ -31,6 +34,18 @@ $google-search-text-color: #4f6199;
     padding: 0;
     box-sizing: border-box;
     font-family: "vazir";
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
@@ -103,7 +118,6 @@ body {
                 text-decoration: line-through;
                 color: blue;
             }
-
         }
 
         label {
@@ -117,7 +131,7 @@ body {
         }
 
         .task-title {
-            overflow: hidden;
+            color: $task-title-color;
         }
 
         .buttons-wrapper {
@@ -182,12 +196,12 @@ body {
     }
 }
 
-.search {
+.search-box {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    form {
+    form#search {
         width: 90%;
         height: 60%;
         position: relative;
@@ -242,7 +256,8 @@ body {
         top: 50%;
         right: 10px;
         transform: translate(0, -50%);
-        background: url("./../../images/google-logo.png") no-repeat center center / contain;
+        background: url("./../../images/google-logo.png") no-repeat center
+            center / contain;
     }
 }
 
@@ -258,17 +273,52 @@ body {
     a {
         width: 100%;
         aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         border-radius: 1rem;
+        border: 1px solid transparent;
+        color: rgba(0, 0, 0, 0.6);
         background: $primary-color no-repeat center center / 30%;
+        overflow: hidden;
 
-        &:not(:first-child) {
+        &[href=""] {
             background-image: url("./../../images/plus-icon.png");
+        }
+
+        &:first-child {
+            font-family: "vazir-bold";
+            color: $quick-access-logo-color;
+        }
+
+        &:nth-child(2),
+        &:hover {
+            border-color: $quick-access-border-color;
+        }
+
+        img {
+            width: 45%;
         }
     }
 }
 
 .time-and-weather {
     @include grid-full-col-placement(1/2);
+    height: 40%;
+    display: flex;
+
+    > * {
+        width: 50%;
+    }
+
+    .weather {
+        border-right: 1px solid red;
+    }
+
+    .time {
+        color: blue;
+    }
 }
 
 a.reference {
