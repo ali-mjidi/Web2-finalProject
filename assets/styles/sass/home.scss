@@ -12,15 +12,22 @@ $google-search-text-color: #4f6199;
 $quick-access-border-color: #4f99c2;
 $quick-access-logo-color: #1e2a58;
 $clock-color: #276ef7;
-$other-calendars-color: rgba(0, 0, 0, 0.5);
+$time-weather-secondary-color: rgba(0, 0, 0, 0.5);
 $weather-tempreture-color: #8951fe;
 
 @mixin bold-text {
     font-family: "vazir-bold";
 }
 
-@mixin tempreture-icon-color($color:black, $size:1px) {
+@mixin tempreture-icon-color($color: black, $size: 1px) {
     border: $size solid $color;
+}
+
+@mixin time-weather-btn($border-color) {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    border: 1px solid $border-color;
+    color: $time-weather-secondary-color;
 }
 
 @font-face {
@@ -321,25 +328,36 @@ body {
 }
 // -------------------------------------------------------------------------------------------------
 .time-and-weather {
+    $border-color: rgba(0, 0, 0, 0.1);
+
     grid-row: 2/4;
     grid-column: 1/2;
     display: flex;
 
-    > * {
+    .time, .weather {
         width: 50%;
-        max-height: 60%;
-        overflow: hidden;
-        border-bottom: 1px solid red;
+        height: 60%;
+        border-bottom: 1px solid $border-color;
     }
 
     .weather {
         padding: 8px;
         display: grid;
         grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(4, auto);
+        grid-template-rows: repeat(4, calc(100% / 4));
         place-items: center;
-        // direction: ltr;
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 0.8rem;
+        border-right: 1px solid $border-color;
+
+        .weather-status,
+        .min-max,
+        .weather-btn {
+            grid-column: 1 / -1;
+        }
+
+        .weather-emoji {
+            font-size: 1rem;
+        }
 
         .weather-tempreture {
             @include bold-text();
@@ -351,13 +369,26 @@ body {
             }
         }
 
-        .weather-status, .weather-btn {
-            grid-column: 1/-1;
+        .weather-status {
+            @include bold-text();
+        }
+
+        .min-max {
+            font-size: 0.7rem;
+            color: $time-weather-secondary-color;
+        }
+
+        .weather-btn {
+            @include time-weather-btn($border-color);
+        }
+
+        b {
+            @include bold-text();
         }
 
         sup {
             @include tempreture-icon-color();
-            width: .3em;
+            width: 0.3em;
             aspect-ratio: 1;
             display: inline-block;
             transform: translate(0, -100%);
@@ -385,12 +416,7 @@ body {
         .other-calendars {
             display: flex;
             font-size: 8px;
-            color: $other-calendars-color;
-
-            > * {
-                display: grid;
-                place-content: center;
-            }
+            color: $time-weather-secondary-color;
         }
 
         .gregorian-calendar {
@@ -398,7 +424,7 @@ body {
             height: fit-content;
             padding-right: 0.25rem;
             direction: ltr;
-            border-right: 1px solid $other-calendars-color;
+            border-right: 1px solid $time-weather-secondary-color;
         }
 
         .hijri-calendar {
@@ -408,14 +434,12 @@ body {
         .time-buttons-wrapper {
             @include bold-text();
             font-size: 0.7rem;
-            color: $other-calendars-color;
+            color: $time-weather-secondary-color;
         }
 
         .timer,
         .oghat {
-            padding: 0.25rem 0.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            @include time-weather-btn($border-color);
         }
     }
 }
