@@ -13,9 +13,14 @@ $quick-access-border-color: #4f99c2;
 $quick-access-logo-color: #1e2a58;
 $clock-color: #276ef7;
 $other-calendars-color: rgba(0, 0, 0, 0.5);
+$weather-tempreture-color: #8951fe;
 
 @mixin bold-text {
     font-family: "vazir-bold";
+}
+
+@mixin tempreture-icon-color($color:black, $size:1px) {
+    border: $size solid $color;
 }
 
 @font-face {
@@ -322,15 +327,49 @@ body {
 
     > * {
         width: 50%;
+        max-height: 60%;
+        overflow: hidden;
+        border-bottom: 1px solid red;
     }
 
     .weather {
         padding: 8px;
-        border-right: 1px solid red;
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(4, auto);
+        place-items: center;
+        // direction: ltr;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+        .weather-tempreture {
+            @include bold-text();
+            font-size: 1.8rem;
+            color: $weather-tempreture-color;
+
+            sup {
+                @include tempreture-icon-color($weather-tempreture-color, 3px);
+            }
+        }
+
+        .weather-status, .weather-btn {
+            grid-column: 1/-1;
+        }
+
+        sup {
+            @include tempreture-icon-color();
+            width: .3em;
+            aspect-ratio: 1;
+            display: inline-block;
+            transform: translate(0, -100%);
+            border-radius: 50%;
+        }
     }
 
     .time {
         padding: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
         text-align: center;
 
         .clock,
@@ -339,21 +378,24 @@ body {
         }
 
         .clock {
-            padding: 0.2rem 0;
             font-size: 1.8rem;
             color: $clock-color;
         }
 
         .other-calendars {
-            margin-top: 10px;
             display: flex;
             font-size: 8px;
             color: $other-calendars-color;
+
+            > * {
+                display: grid;
+                place-content: center;
+            }
         }
 
         .gregorian-calendar {
             width: 50%;
-            height: 100%;
+            height: fit-content;
             padding-right: 0.25rem;
             direction: ltr;
             border-right: 1px solid $other-calendars-color;
@@ -365,7 +407,6 @@ body {
 
         .time-buttons-wrapper {
             @include bold-text();
-            margin-top: 0.5rem;
             font-size: 0.7rem;
             color: $other-calendars-color;
         }
