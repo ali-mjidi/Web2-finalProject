@@ -1,3 +1,8 @@
+:root {
+    --quick-access-border-color: #4f99c2;
+    --quick-access-logo-color: #1e2a58;
+}
+
 .quick-access {
     grid-row: 3/4;
     grid-column: 2/3;
@@ -31,12 +36,12 @@
 
 .quick-access a:first-child {
     font-family: "vazir-bold";
-    color: #1e2a58;
+    color: var(--quick-access-logo-color);
 }
 
 .quick-access a:nth-child(2),
 .quick-access a:hover:not(:first-child) {
-    border-color: #4f99c2;
+    border-color: var(--quick-access-border-color);
 }
 
 .quick-access a img {
