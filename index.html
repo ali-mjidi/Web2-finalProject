@@ -4,22 +4,30 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Grand Project</title>
-        <link rel="stylesheet" href="./assets/styles/css/home.css" />
+        <link rel="stylesheet" href="./assets/styles/reset.css" />
     </head>
     <body>
         <main class="container">
-            <div class="test"></div>
+            <nav class="nav"></nav>
             <div class="time-and-weather">
                 <div class="time">
-                    <div class="clock">۲۲:۳۱</div>
-                    <div class="jalali-calendar">۱۱ آذر</div>
-                    <div class="other-calendars">
-                        <div class="hijri-calendar">۱۴۴۵/جمادی الاول/۲۱</div>
-                        <div class="gregorian-calendar">۲۰۲۳/dec/۲</div>
+                    <div class="time__clock clock">۲۲:۳۱</div>
+                    <div class="time__calendar--jalali jalali-calendar">
+                        ۱۱ آذر
                     </div>
-                    <div class="time-buttons-wrapper">
-                        <span class="timer">تایمر</span>
-                        <span class="oghat">اوقات شرعی</span>
+                    <div class="time__other-calendars-wrapper other-calendars">
+                        <div class="time__calendar--hijri hijri-calendar">
+                            ۱۴۴۵/جمادی الاول/۲۱
+                        </div>
+                        <div
+                            class="time__calendar--gregorian gregorian-calendar"
+                        >
+                            ۲۰۲۳/dec/۲
+                        </div>
+                    </div>
+                    <div class="time__features features time-buttons-wrapper">
+                        <span class="features__timer">تایمر</span>
+                        <span class="features__oghat">اوقات شرعی</span>
                     </div>
                 </div>
                 <div class="weather">
@@ -27,7 +35,8 @@
                     <span class="weather-emoji">❄️</span>
                     <span class="weather-status">بس ناجوانمردانه سرد ❄️</span>
                     <span class="min-max">
-                        <sup></sup><b class="max-tempreture">۱۲</b> حداکثر . <sup></sup><b class="min-tempreture">۱۰</b> حداقل
+                        <sup></sup><b class="max-tempreture">۱۲</b> حداکثر .
+                        <sup></sup><b class="min-tempreture">۱۰</b> حداقل
                     </span>
                     <span class="weather-btn">پیش بینی</span>
                 </div>
