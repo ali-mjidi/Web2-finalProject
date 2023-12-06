@@ -1,3 +1,9 @@
+:root {
+    --clock-color: #276ef7;
+    --time-weather-secondary-color: rgba(0, 0, 0, 0.5);
+    --weather-temperature-color: #8951fe;
+}
+
 .time-and-weather {
     grid-row: 2/4;
     grid-column: 1/2;
@@ -34,11 +40,11 @@
 .weather__temperature {
     font-family: "vazir-bold";
     font-size: 1.8rem;
-    color: #8951fe;
+    color: var(--weather-temperature-color);
 }
 
 .weather__temperature .temperature-icon {
-    border: 3px solid #8951fe;
+    border: 3px solid var(--weather-temperature-color);
 }
 
 .weather__status {
@@ -47,14 +53,14 @@
 
 .min-max-wrapper {
     font-size: 0.7rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--time-weather-secondary-color);
 }
 
 .weather__btn {
     padding: 0.25rem 0.5rem;
     border-radius: 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--time-weather-secondary-color);
 }
 
 .weather b {
@@ -62,12 +68,13 @@
 }
 
 .temperature-icon {
-    border: 1px solid #000;
     width: 0.2em;
+    box-sizing: content-box;
     aspect-ratio: 1;
     display: inline-block;
     transform: translate(0, -100%);
     border-radius: 50%;
+    border: 1px solid #000;
 }
 
 .time {
@@ -85,13 +92,13 @@
 
 .time__clock {
     font-size: 1.8rem;
-    color: #276ef7;
+    color: var(--clock-color);
 }
 
 .other-calendars-wrapper {
     display: flex;
     font-size: 9px;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--time-weather-secondary-color);
 }
 
 .gregorian-calendar {
@@ -99,7 +106,7 @@
     height: fit-content;
     padding-right: 0.25rem;
     direction: ltr;
-    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    border-right: 1px solid var(--time-weather-secondary-color);
 }
 
 .hijri-calendar {
@@ -109,7 +116,7 @@
 .time__features {
     font-family: "vazir-bold";
     font-size: 0.7rem;
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--time-weather-secondary-color);
 }
 
 .features__timer,
@@ -117,7 +124,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--time-weather-secondary-color);
 }
 
 @media (min-width: 360px) and (max-width: 1025px) {
