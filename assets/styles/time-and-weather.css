@@ -88,7 +88,7 @@
     color: #276ef7;
 }
 
-.time__other-calendars-wrapper {
+.other-calendars-wrapper {
     display: flex;
     font-size: 9px;
     color: rgba(0, 0, 0, 0.5);
@@ -131,11 +131,11 @@
         font-size: 1rem;
     }
 
-    .time-and-weather .weather .weather-tempreture {
+    .weather__tempreture {
         font-size: 2.5rem;
     }
 
-    .time-and-weather .weather .weather-emoji {
+    .weather__emoji {
         font-size: 2rem;
     }
 
@@ -147,7 +147,7 @@
         font-size: 1.5rem;
     }
 
-    .time__other-calendars-wrapper {
+    .other-calendars-wrapper {
         font-size: 0.7rem;
     }
 
