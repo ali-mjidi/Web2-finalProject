@@ -8,10 +8,6 @@
 :root {
     --background-color: #c4def7;
     --primary-color: #fff;
-    --checkbox-border-color: #3cc367;
-    --checkbox-background-color: #cef0d9;
-    --task-input-color: #9aa8bc;
-    --task-title-color: #333e67;
 }
 
 a {
