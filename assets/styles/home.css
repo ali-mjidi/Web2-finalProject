@@ -2,6 +2,12 @@
 @import url("./reset.css");
 @import url("./time-and-weather.css");
 @import url("./search-box.css");
+@import url("./quick-access.css");
+
+:root {
+    --background-color: #c4def7;
+    --primary-color: #fff;
+}
 
 a {
     text-decoration: none;
@@ -9,11 +15,11 @@ a {
 }
 
 body {
-    background-color: #c4def7;
+    background-color: var(--background-color);
 }
 
 .container {
-    width: Min(1124px, 100%);
+    width: min(1124px, 100%);
     height: 100vh;
     padding: 1rem 0;
     margin: 0 auto;
@@ -27,7 +33,7 @@ body {
 .container > * {
     direction: rtl;
     border-radius: 24px;
-    background-color: #fff;
+    background-color: var(--primary-color);
 }
 
 .nav {
@@ -162,49 +168,7 @@ body {
     color: #9aa8bc;
 }
 
-.quick-access {
-    grid-row: 3/4;
-    grid-column: 2/3;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, calc((100% / 6) - 10px));
-    gap: 10px;
-    justify-content: center;
-    align-content: start;
-    background-color: transparent;
-}
 
-.quick-access a {
-    width: 100%;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    border-radius: 1rem;
-    border: 1px solid transparent;
-    color: rgba(0, 0, 0, 0.6);
-    background: #fff no-repeat center center/30%;
-    overflow: hidden;
-}
-
-.quick-access a[href=""] {
-    background-image: url("./../../images/plus-icon.png");
-}
-
-.quick-access a:first-child {
-    font-family: "vazir-bold";
-    color: #1e2a58;
-}
-
-.quick-access a:nth-child(2),
-.quick-access a:hover:not(:first-child) {
-    border-color: #4f99c2;
-}
-
-.quick-access a img {
-    width: 45%;
-}
 
 a.reference {
     padding: 10px 20px;
@@ -226,20 +190,7 @@ a.reference {
         grid-column: 1/-1;
     }
 
-    .quick-access {
-        grid-row: 4/5;
-        grid-template-columns: repeat(2, calc(50% - 10px));
-        grid-template-rows: repeat(auto-fit, calc(100% / 6 - 10px));
-    }
-
-    .quick-access a {
-        aspect-ratio: 0;
-        background-size: 20%;
-    }
-
-    .quick-access a img {
-        width: 30%;
-    }
+    
 
     .todo-list {
         grid-row: -2/-1;

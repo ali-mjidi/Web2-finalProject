@@ -1,0 +1,61 @@
+.quick-access {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc((100% / 6) - 10px));
+    gap: 10px;
+    justify-content: center;
+    align-content: start;
+    direction: rtl;
+    background-color: transparent !important;
+}
+
+.quick-access a {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    color: rgba(0, 0, 0, 0.6);
+    background: var(--primary-color) no-repeat center center/30%;
+    overflow: hidden;
+}
+
+.quick-access a[href=""] {
+    background-image: url("./../images/plus-icon.png");
+}
+
+.quick-access a:first-child {
+    font-family: "vazir-bold";
+    color: #1e2a58;
+}
+
+.quick-access a:nth-child(2),
+.quick-access a:hover:not(:first-child) {
+    border-color: #4f99c2;
+}
+
+.quick-access a img {
+    width: 45%;
+}
+
+@media (min-width: 360px) and (max-width: 1025px) {
+    .quick-access {
+        grid-row: 4/5;
+        grid-template-columns: repeat(2, calc(50% - 10px));
+        grid-template-rows: repeat(auto-fit, calc(100% / 6 - 10px));
+    }
+
+    .quick-access a {
+        aspect-ratio: 0;
+        background-size: 20%;
+    }
+
+    .quick-access a img {
+        width: 30%;
+    }
+}
