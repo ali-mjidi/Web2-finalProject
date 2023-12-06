@@ -21,47 +21,47 @@
     border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.time-and-weather .weather .weather-status,
-.time-and-weather .weather .min-max,
-.time-and-weather .weather .weather-btn {
+.weather__status,
+.min-max-wrapper,
+.weather__btn {
     grid-column: 1 / -1;
 }
 
-.time-and-weather .weather .weather-emoji {
+.weather__emoji {
     font-size: 1rem;
 }
 
-.time-and-weather .weather .weather-tempreture {
+.weather__tempreture {
     font-family: "vazir-bold";
     font-size: 1.8rem;
     color: #8951fe;
 }
 
-.time-and-weather .weather .weather-tempreture sup {
+.weather__tempreture .tempreture-icon {
     border: 3px solid #8951fe;
 }
 
-.time-and-weather .weather .weather-status {
+.weather__status {
     font-family: "vazir-bold";
 }
 
-.time-and-weather .weather .min-max {
+.min-max-wrapper {
     font-size: 0.7rem;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.time-and-weather .weather .weather-btn {
+.weather__btn {
     padding: 0.25rem 0.5rem;
     border-radius: 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.5);
 }
 
-.time-and-weather .weather b {
+.weather b {
     font-family: "vazir-bold";
 }
 
-.time-and-weather .weather sup {
+.tempreture-icon {
     border: 1px solid #000;
     width: 0.2em;
     aspect-ratio: 1;
