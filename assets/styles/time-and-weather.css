@@ -31,13 +31,13 @@
     font-size: 1rem;
 }
 
-.weather__tempreture {
+.weather__temperature {
     font-family: "vazir-bold";
     font-size: 1.8rem;
     color: #8951fe;
 }
 
-.weather__tempreture .tempreture-icon {
+.weather__temperature .temperature-icon {
     border: 3px solid #8951fe;
 }
 
@@ -61,7 +61,7 @@
     font-family: "vazir-bold";
 }
 
-.tempreture-icon {
+.temperature-icon {
     border: 1px solid #000;
     width: 0.2em;
     aspect-ratio: 1;
@@ -131,7 +131,7 @@
         font-size: 1rem;
     }
 
-    .weather__tempreture {
+    .weather__temperature {
         font-size: 2.5rem;
     }
 
