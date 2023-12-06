@@ -3,6 +3,7 @@
 @import url("./time-and-weather.css");
 @import url("./search-box.css");
 @import url("./quick-access.css");
+@import url("./todo-list.css");
 
 :root {
     --background-color: #c4def7;
@@ -43,133 +44,6 @@ body {
     border: 1px solid blue;
 }
 
-.todo-list {
-    grid-column: 3/4;
-    grid-row: 2/-1;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-}
-
-.todo-list h2 {
-    font-family: "vazir-bold";
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.todo-list .tasks-list {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.todo-list .task {
-    height: max-content;
-    padding: 4px;
-    display: grid;
-    grid-template-columns: auto 50% auto;
-    align-items: center;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.todo-list .task:hover .buttons-wrapper {
-    opacity: 1;
-    visibility: visible;
-}
-
-.todo-list .task input {
-    display: none;
-}
-
-.todo-list .task input:checked + label {
-    background: #cef0d9 url("./../../images/check-icon.svg") no-repeat center
-        center/80%;
-}
-
-.todo-list .task input:checked ~ span {
-    text-decoration: line-through;
-    color: blue;
-}
-
-.todo-list .task label {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 2px solid #3cc367;
-    background-color: #cef0d9;
-}
-
-.todo-list .task .task-title {
-    color: #333e67;
-}
-
-.todo-list .task .buttons-wrapper {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 5px;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.todo-list .task .buttons-wrapper span {
-    width: 20px;
-    aspect-ratio: 1;
-    display: block;
-    cursor: pointer;
-    background: no-repeat center center / 90%;
-}
-
-.todo-list .task .buttons-wrapper .delete-task {
-    background-image: url("./../../images/delete-icon.png");
-}
-
-.todo-list .task .buttons-wrapper .edit-task {
-    background-image: url("./../../images/edit-icon.png");
-}
-
-.todo-list form {
-    padding: 1rem 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.todo-list form i {
-    width: 12px;
-    aspect-ratio: 1;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translate(50%, -50%);
-    background: url("./../../images/plus-icon.png") no-repeat center
-        center/cover;
-}
-
-.todo-list .task-input {
-    width: 100%;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    caret-color: rgba(0, 0, 0, 0.5);
-}
-
-.todo-list .task-input:focus {
-    outline: 1px solid green;
-}
-
-.todo-list .task-input::placeholder {
-    font-family: "vazir-bold";
-    color: #9aa8bc;
-}
-
-
-
 a.reference {
     padding: 10px 20px;
     position: absolute;
@@ -188,30 +62,5 @@ a.reference {
 
     .container > * {
         grid-column: 1/-1;
-    }
-
-    
-
-    .todo-list {
-        grid-row: -2/-1;
-    }
-
-    .todo-list h2 {
-        font-size: 1.8rem;
-    }
-
-    .todo-list .task .task-title {
-        font-size: 1.5rem;
-    }
-
-    .todo-list .task .buttons-wrapper {
-        width: max-content;
-        place-self: end;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .todo-list .task .buttons-wrapper span {
-        width: 30px;
     }
 }

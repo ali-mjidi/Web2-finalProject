@@ -73,16 +73,27 @@
                 <a href=""></a>
                 <a href=""></a>
             </div>
+
             <div class="todo-list">
-                <h2>دست نویس</h2>
+                <h2 class="todo-list__header">دست نویس</h2>
                 <div class="tasks-list">
                     <div class="task">
-                        <input type="checkbox" name="" id="complete-check1" />
-                        <label for="complete-check1"></label>
-                        <span class="task-title">کار شماره اول</span>
-                        <div class="buttons-wrapper">
-                            <span class="delete-task"></span>
-                            <span class="edit-task"></span>
+                        <input
+                            type="checkbox"
+                            name=""
+                            class="task__complete-checkbox"
+                            id="complete-check1"
+                        />
+                        <label
+                            class="task__checkbox-label"
+                            for="complete-check1"
+                        ></label>
+
+                        <span class="task__title">کار شماره اول</span>
+
+                        <div class="task__options">
+                            <span class="task__btn task__btn--delete"></span>
+                            <span class="task__btn task__btn--edit"></span>
                         </div>
                     </div>
                     <!-- <div class="task">
@@ -104,13 +115,13 @@
                         </div>
                     </div> -->
                 </div>
-                <form action="">
+                <form action="" class="add-task">
                     <input
                         type="text"
                         placeholder="نوشتن تسک جدید"
-                        class="task-input"
+                        class="add-task__input"
                     />
-                    <i></i>
+                    <i class="add-task__icon"></i>
                 </form>
             </div>
         </main>
