@@ -8,6 +8,19 @@
 :root {
     --background-color: #c4def7;
     --primary-color: #fff;
+    --checkbox-border-color: #3cc367;
+    --checkbox-background-color: #cef0d9;
+    --task-input-color: #9aa8bc;
+    --task-title-color: #333e67;
+    --search-box-background: #f2f3f5;
+    --search-btn-background: #3d518f;
+    --google-search-placeholder: #b1b1b2;
+    --google-search-text-color: #4f6199;
+    --quick-access-border-color: #4f99c2;
+    --quick-access-logo-color: #1e2a58;
+    --clock-color: #276ef7;
+    --time-weather-secondary-color: rgba(0, 0, 0, 0.5);
+    --weather-temperature-color: #8951fe;
 }
 
 a {
