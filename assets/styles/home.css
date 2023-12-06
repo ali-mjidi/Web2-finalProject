@@ -1,13 +1,7 @@
 @import url("./fonts.css");
 @import url("./reset.css");
 @import url("./time-and-weather.css");
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-    display: none;
-}
+@import url("./search-box.css");
 
 a {
     text-decoration: none;
@@ -168,72 +162,6 @@ body {
     color: #9aa8bc;
 }
 
-.search-box {
-    grid-row: 2/3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.search-box form#search {
-    width: 90%;
-    height: 60%;
-    position: relative;
-}
-
-.search-box .google-search-input {
-    width: 100%;
-    height: 100%;
-    padding-right: calc(2rem + 10px);
-    border-radius: 2rem;
-    border: none;
-    outline: none;
-    color: #4f6199;
-    background-color: #f2f3f5;
-}
-
-.search-box .google-search-input::placeholder {
-    font-family: "vazir-bold";
-    color: #b1b1b2;
-}
-
-.search-box .search-btn {
-    height: 60%;
-    aspect-ratio: 1.5/1;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 2%;
-    transform: translate(0, -50%);
-    border-radius: 2rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: #3d518f url("./../../images/search-icon.png") no-repeat center
-        center/35%;
-    transition: 0.2s;
-}
-
-.search-box .search-btn:hover {
-    scale: 1.05;
-}
-
-.search-box .search-btn:active {
-    scale: 1;
-}
-
-.search-box .google-logo {
-    height: 50%;
-    aspect-ratio: 1;
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translate(0, -50%);
-    background: url("./../../images/google-logo.png") no-repeat center
-        center/contain;
-}
-
 .quick-access {
     grid-row: 3/4;
     grid-column: 2/3;
@@ -296,10 +224,6 @@ a.reference {
 
     .container > * {
         grid-column: 1/-1;
-    }
-
-    .search-box .google-search-input {
-        font-size: 1rem;
     }
 
     .quick-access {
