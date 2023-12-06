@@ -1,0 +1,158 @@
+.time-and-weather {
+    grid-row: 2/4;
+    grid-column: 1/2;
+    display: flex;
+}
+
+.time,
+.weather {
+    width: 50%;
+    height: 60%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.weather {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, calc(100% / 4));
+    place-items: center;
+    font-size: 0.7rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.time-and-weather .weather .weather-status,
+.time-and-weather .weather .min-max,
+.time-and-weather .weather .weather-btn {
+    grid-column: 1 / -1;
+}
+
+.time-and-weather .weather .weather-emoji {
+    font-size: 1rem;
+}
+
+.time-and-weather .weather .weather-tempreture {
+    font-family: "vazir-bold";
+    font-size: 1.8rem;
+    color: #8951fe;
+}
+
+.time-and-weather .weather .weather-tempreture sup {
+    border: 3px solid #8951fe;
+}
+
+.time-and-weather .weather .weather-status {
+    font-family: "vazir-bold";
+}
+
+.time-and-weather .weather .min-max {
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.time-and-weather .weather .weather-btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.time-and-weather .weather b {
+    font-family: "vazir-bold";
+}
+
+.time-and-weather .weather sup {
+    border: 1px solid #000;
+    width: 0.2em;
+    aspect-ratio: 1;
+    display: inline-block;
+    transform: translate(0, -100%);
+    border-radius: 50%;
+}
+
+.time {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.time__clock,
+.jalali-calendar {
+    font-family: "vazir-bold";
+}
+
+.time__clock {
+    font-size: 1.8rem;
+    color: #276ef7;
+}
+
+.time__other-calendars-wrapper {
+    display: flex;
+    font-size: 9px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.gregorian-calendar {
+    width: 50%;
+    height: fit-content;
+    padding-right: 0.25rem;
+    direction: ltr;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.hijri-calendar {
+    padding-left: 0.25rem;
+}
+
+.time__features {
+    font-family: "vazir-bold";
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.features__timer,
+.features__oghat {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 360px) and (max-width: 1025px) {
+    .time-and-weather {
+        grid-row: 3/4;
+        width: 100%;
+        aspect-ratio: 1/0.9;
+    }
+
+    .weather {
+        font-size: 1rem;
+    }
+
+    .time-and-weather .weather .weather-tempreture {
+        font-size: 2.5rem;
+    }
+
+    .time-and-weather .weather .weather-emoji {
+        font-size: 2rem;
+    }
+
+    .time__clock {
+        font-size: 2.5rem;
+    }
+
+    .jalali-calendar {
+        font-size: 1.5rem;
+    }
+
+    .time__other-calendars-wrapper {
+        font-size: 0.7rem;
+    }
+
+    .features__timer,
+    .features__oghat {
+        font-size: 1rem;
+    }
+}
