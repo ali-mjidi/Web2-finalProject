@@ -75,19 +75,14 @@
             </div>
 
             <div class="todo-list">
-                <h2 class="todo-list__header">دست نویس</h2>
+                <h2 class="todo-list__header">دست&#8239;نویس</h2>
                 <div class="tasks-list">
                     <div class="task">
                         <input
                             type="checkbox"
                             name=""
                             class="task__complete-checkbox"
-                            id="complete-check1"
                         />
-                        <label
-                            class="task__checkbox-label"
-                            for="complete-check1"
-                        ></label>
 
                         <span class="task__title">کار شماره اول</span>
 
@@ -96,27 +91,24 @@
                             <span class="task__btn task__btn--edit"></span>
                         </div>
                     </div>
-                    
+
                     <div class="task">
                         <input
                             type="checkbox"
                             name=""
                             class="task__complete-checkbox"
-                            id="complete-check1"
                         />
-                        <label
-                            class="task__checkbox-label"
-                            for="complete-check1"
-                        ></label>
 
-                        <span class="task__title">کار شماره سوم هستش این که اینکار باید انجام بشه فهمیدی</span>
+                        <span class="task__title"
+                            >کار شماره سوم هستش این که اینکار باید انجام بشه
+                            فهمیدی</span
+                        >
 
                         <div class="task__options">
                             <span class="task__btn task__btn--delete"></span>
                             <span class="task__btn task__btn--edit"></span>
                         </div>
                     </div>
-
                 </div>
                 <form action="" class="add-task">
                     <input
@@ -124,7 +116,7 @@
                         placeholder="نوشتن تسک جدید"
                         class="add-task__input"
                     />
-                    <i class="add-task__icon"></i>
+                    <input type="submit" value="" class="add-task__btn" />
                 </form>
             </div>
         </main>
@@ -137,6 +129,6 @@
             Project reference
         </a>
 
-        <script src="./assets/scripts/test.js"></script>
+        <script src="./assets/scripts/todo-list.js"></script>
     </body>
 </html>
