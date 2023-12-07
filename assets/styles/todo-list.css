@@ -28,7 +28,7 @@
 }
 
 .task {
-    height: max-content;
+    max-height: 30px;
     padding: 4px;
     display: grid;
     grid-template-columns: auto 50% auto;
@@ -68,6 +68,9 @@
 
 .task__title {
     color: var(--task-title-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .task__options {
