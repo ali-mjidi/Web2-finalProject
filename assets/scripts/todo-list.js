@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------- inputs
-const tasksList = document.querySelector(".tasks-list");
+const tasksListElement = document.querySelector(".tasks-list");
 const taskAddForm = document.querySelector(".add-task");
 const taskAddInput = document.querySelector(".add-task__input");
 const taskAddBtn = document.querySelector(".add-task__btn");
@@ -11,9 +11,16 @@ if (localStorage.getItem("tasks")) {
     tasksArray = new Array();
 }
 
+// --------------------------------------------------- expression functions
+const addTaskToListElement = taskTitle =>
+    tasksListElement.prepend(createTaskElement(taskTitle));
+
+const saveToLocalStorage = () =>
+    localStorage.setItem("tasks", JSON.stringify(tasksArray));
+
 // ---------------------------------------------------------------- process
 window.addEventListener("load", () => {
-    tasksList.innerHTML = "";
+    tasksListElement.innerHTML = "";
     taskAddInput.value = "";
 
     if (tasksArray.length) {
@@ -30,9 +37,9 @@ taskAddForm.addEventListener("submit", e => {
     if (taskTitle) {
         taskAddInput.value = "";
 
-        // tasksList.insertAdjacentHTML("afterbegin", createTaskElementHtml());
+        // tasksListElement.insertAdjacentHTML("afterbegin", createTaskElementHtml());
 
-        // tasksList.prepend(createTaskElement(taskTitle))
+        // tasksListElement.prepend(createTaskElement(taskTitle))
 
         addTask(taskTitle);
     } else {
@@ -40,21 +47,25 @@ taskAddForm.addEventListener("submit", e => {
     }
 });
 
+tasksListElement.addEventListener("click", e => {
+    if (e.target.classList.contains("task__btn--delete")) {
+        const taskElement = e.target.parentElement.parentElement;
+        const taskTitle = taskElement.children[1].innerText;
+
+        tasksArray.splice(tasksArray.indexOf(taskTitle), 1);
+        taskElement.remove();
+
+        saveToLocalStorage();
+    }
+});
+
 // -------------------------------------------------------------- functions
 function addTask(taskTitle) {
     addTaskToListElement(taskTitle);
 
-    addTaskToLocalStorage(taskTitle);
-}
-
-function addTaskToListElement(taskTitle) {
-    tasksList.prepend(createTaskElement(taskTitle));
-}
-
-function addTaskToLocalStorage(taskTitle) {
     tasksArray.push(taskTitle);
 
-    localStorage.setItem("tasks", JSON.stringify(tasksArray));
+    saveToLocalStorage();
 }
 
 function createTaskElementHtml(taskTitle = "test") {
