@@ -5,6 +5,7 @@ const timeApiUrl = "https://api.dastyar.io/express/clock/current";
 const clockElement = document.querySelector(".time__clock");
 const jalaliCalendarElement = document.querySelector(".jalali-calendar");
 const gregorianCalendarElement = document.querySelector(".gregorian-calendar");
+const hijriCalendarElement = document.querySelector(".hijri-calendar");
 
 // ---------------------------------------------------------------- process
 window.addEventListener("load", async () => {
@@ -23,6 +24,11 @@ window.addEventListener("load", async () => {
         month: "short",
     });
     const gregorianDay = toPersianNumber(time.getDate());
+    const hijriMonth = time.toLocaleDateString("ar-SA", { month: "long" });
+    const hijriYear = time
+        .toLocaleDateString("ar-SA", { year: "numeric" })
+        .split(" ")[0];
+    const hijriDay = time.toLocaleDateString("ar-SA", { day: "2-digit" });
 
     clockElement.innerText = `${hour}:${minute}`;
 
@@ -33,6 +39,10 @@ window.addEventListener("load", async () => {
         gregorianMonth,
         gregorianDay,
     ].join("/");
+
+    hijriCalendarElement.innerText = [hijriYear, hijriMonth, hijriDay].join(
+        "/"
+    );
 });
 
 // -------------------------------------------------------------- functions
