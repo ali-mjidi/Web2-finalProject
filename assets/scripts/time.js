@@ -4,20 +4,6 @@ import { toPersianNumber, toEnglishNumber } from "./number-converter.js";
 const timeApiUrl = "https://api.dastyar.io/express/clock/current";
 const clockElement = document.querySelector(".time__clock");
 const jalaliCalendarElement = document.querySelector(".jalali-calendar");
-const wholePersianMonths = [
-    "فروردین",
-    "اردیبهشت",
-    "خرداد",
-    "تیر",
-    "مرداد",
-    "شهریور",
-    "مهر",
-    "آبان",
-    "آذر",
-    "دی",
-    "بهمن",
-    "اسفند",
-];
 
 // ---------------------------------------------------------------- process
 window.addEventListener("load", async () => {
@@ -25,10 +11,12 @@ window.addEventListener("load", async () => {
     const time = new Date(timeData);
     const minute = toPersianNumber(time.getMinutes());
     const hour = toPersianNumber(time.getHours());
-    const jalaliDate = time.toLocaleDateString("fa-IR").split("/");
-    let [_, jalaliMonth, jalaliDay] = jalaliDate;
-
-    jalaliMonth = wholePersianMonths[toEnglishNumber(jalaliMonth) - 1];
+    const [jalaliDay, jalaliMonth] = time
+        .toLocaleDateString("fa-IR", {
+            day: "numeric",
+            month: "long",
+        })
+        .split(" ");
 
     clockElement.innerText = `${hour}:${minute}`;
 
