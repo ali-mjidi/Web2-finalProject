@@ -33,10 +33,6 @@
     grid-column: 1 / -1;
 }
 
-.weather__emoji {
-    font-size: 1rem;
-}
-
 .weather__temperature {
     font-family: "vazir-bold";
     font-size: 1.8rem;
@@ -152,10 +148,6 @@
 
     .weather__temperature {
         font-size: 2.5rem;
-    }
-
-    .weather__emoji {
-        font-size: 2rem;
     }
 
     .time__clock {
