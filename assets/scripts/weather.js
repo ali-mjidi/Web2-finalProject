@@ -1,4 +1,6 @@
 // ----------------------------------------------------------------- inputs
+import { changeNumberFormat } from "./number-converter.js";
+
 const weatherApiUrl =
     "https://api.dastyar.io/express/weather?lat=35.67194277&lng=51.42434403&lang=fa&theme=light";
 const currentTemperature = document.querySelector(".weather__temperature");
@@ -44,16 +46,4 @@ async function getWeatherData() {
     const data = await response.json();
 
     return data[0];
-}
-
-function changeNumberFormat(number) {
-    const persianNumbers = "۰۱۲۳۴۵۶۷۸۹".split("");
-
-    number = String(number);
-    number = number.split("");
-    for (let char of number) {
-        number[number.indexOf(char)] = persianNumbers[char];
-    }
-
-    return number.join("");
 }
