@@ -1,6 +1,5 @@
-function changeNumberFormat(number) {
-    const persianNumbers = "۰۱۲۳۴۵۶۷۸۹".split("");
-
+const persianNumbers = "۰۱۲۳۴۵۶۷۸۹".split("");
+function toPersianNumber(number) {
     number = String(number);
     number = number.split("");
     for (let char of number) {
@@ -10,4 +9,20 @@ function changeNumberFormat(number) {
     return number.join("");
 }
 
-export { changeNumberFormat };
+function toEnglishNumber(number) {
+    if (isNaN(number)) {
+        const temp = number.split("");
+
+        let englishNumber = temp.reduce((init, value) => {
+            init.push(persianNumbers.findIndex(x => x === value));
+
+            return init;
+        }, []);
+
+        englishNumber = englishNumber.join("");
+
+        return englishNumber;
+    }
+}
+
+export { toPersianNumber, toEnglishNumber };

@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------- inputs
-import { changeNumberFormat } from "./number-converter.js";
+import { toPersianNumber } from "./number-converter.js";
 
 const weatherApiUrl =
     "https://api.dastyar.io/express/weather?lat=35.67194277&lng=51.42434403&lang=fa&theme=light";
@@ -22,9 +22,9 @@ window.addEventListener("load", async () => {
     } = weatherData;
     let newImageSrc;
 
-    currentTemperature.innerText = changeNumberFormat(Math.round(current));
-    maxTemperature.innerText = changeNumberFormat(Math.round(max));
-    minTemperature.innerText = changeNumberFormat(Math.round(min));
+    currentTemperature.innerText = toPersianNumber(Math.round(current));
+    maxTemperature.innerText = toPersianNumber(Math.round(max));
+    minTemperature.innerText = toPersianNumber(Math.round(min));
 
     weatherStatus.innerText = text + " " + emoji;
 
