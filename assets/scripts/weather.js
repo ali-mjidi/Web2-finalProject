@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------- inputs
-const apiUrl =
+const weatherApiUrl =
     "https://api.dastyar.io/express/weather?lat=35.67194277&lng=51.42434403&lang=fa&theme=light";
 const currentTemperature = document.querySelector(".weather__temperature");
 const minTemperature = document.querySelector(".min-temperature");
@@ -9,7 +9,7 @@ const weatherIcon = document.querySelector(".weather__icon");
 
 // ----------------------------------------------------------------- inputs
 window.addEventListener("load", async () => {
-    const data = await getData();
+    const weatherData = await getWeatherData();
     const {
         current,
         max,
@@ -17,7 +17,7 @@ window.addEventListener("load", async () => {
         customDescription: { text, emoji },
         weather: { icon },
         textColor,
-    } = data;
+    } = weatherData;
     let newImageSrc;
 
     currentTemperature.innerText = changeNumberFormat(Math.round(current));
@@ -27,7 +27,7 @@ window.addEventListener("load", async () => {
     weatherStatus.innerText = text + " " + emoji;
 
     newImageSrc = weatherIcon.src;
-    newImageSrc = newImageSrc.slice(0, newImageSrc.lastIndexOf("/") + 1)
+    newImageSrc = newImageSrc.slice(0, newImageSrc.lastIndexOf("/") + 1);
     newImageSrc += icon + ".svg";
 
     weatherIcon.src = newImageSrc;
@@ -39,8 +39,8 @@ window.addEventListener("load", async () => {
 });
 
 // -------------------------------------------------------------- functions
-async function getData() {
-    const response = await fetch(apiUrl);
+async function getWeatherData() {
+    const response = await fetch(weatherApiUrl);
     const data = await response.json();
 
     return data[0];
