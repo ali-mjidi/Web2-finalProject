@@ -43,6 +43,28 @@
     color: var(--weather-temperature-color);
 }
 
+.weather__temperature.temperature::after {
+    border-color: var(--weather-temperature-color);
+    border-width: 3px;
+}
+
+.temperature {
+    position: relative;
+}
+
+.temperature::after {
+    content: "";
+    width: 0.2em;
+    box-sizing: content-box;
+    aspect-ratio: 1;
+    display: inline-block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border-radius: 50%;
+    border: 1px solid var(--time-weather-secondary-color);
+}
+
 .weather__temperature .temperature-icon {
     border: 3px solid var(--weather-temperature-color);
 }
@@ -65,16 +87,6 @@
 
 .weather b {
     font-family: "vazir-bold";
-}
-
-.temperature-icon {
-    width: 0.2em;
-    box-sizing: content-box;
-    aspect-ratio: 1;
-    display: inline-block;
-    transform: translate(0, -100%);
-    border-radius: 50%;
-    border: 1px solid #000;
 }
 
 .time {
