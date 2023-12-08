@@ -4,6 +4,7 @@ import { toPersianNumber, toEnglishNumber } from "./number-converter.js";
 const timeApiUrl = "https://api.dastyar.io/express/clock/current";
 const clockElement = document.querySelector(".time__clock");
 const jalaliCalendarElement = document.querySelector(".jalali-calendar");
+const gregorianCalendarElement = document.querySelector(".gregorian-calendar");
 
 // ---------------------------------------------------------------- process
 window.addEventListener("load", async () => {
@@ -17,10 +18,21 @@ window.addEventListener("load", async () => {
             month: "long",
         })
         .split(" ");
+    const gregorianYear = toPersianNumber(time.getFullYear());
+    const gregorianMonth = time.toLocaleDateString("default", {
+        month: "short",
+    });
+    const gregorianDay = toPersianNumber(time.getDate());
 
     clockElement.innerText = `${hour}:${minute}`;
 
     jalaliCalendarElement.innerText = jalaliDay + " " + jalaliMonth;
+
+    gregorianCalendarElement.innerText = [
+        gregorianYear,
+        gregorianMonth,
+        gregorianDay,
+    ].join("/");
 });
 
 // -------------------------------------------------------------- functions
