@@ -4,6 +4,13 @@
     --weather-temperature-color: #8951fe;
 }
 
+.btn {
+    padding: 0.25rem 0;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--time-weather-secondary-color);
+}
+
 .time-and-weather {
     grid-row: 2/4;
     grid-column: 1/2;
@@ -76,9 +83,6 @@
 
 .weather__btn {
     padding: 0.25rem 0.5rem;
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: var(--time-weather-secondary-color);
 }
 
 .weather b {
@@ -94,6 +98,12 @@
 }
 
 .time__clock,
+.jalali-calendar,
+.other-calendars-wrapper {
+    grid-column: 1 / -1;
+}
+
+.time__clock,
 .jalali-calendar {
     font-family: "vazir-bold";
 }
@@ -106,34 +116,27 @@
 .other-calendars-wrapper {
     display: flex;
     font-size: 8px;
-    line-height: 10px;
+    line-height: 14px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    place-items: center;
     color: var(--time-weather-secondary-color);
 }
 
 .gregorian-calendar {
-    width: 50%;
-    height: fit-content;
-    padding-right: 0.25rem;
+    width: 100%;
     direction: ltr;
     border-right: 1px solid var(--time-weather-secondary-color);
 }
 
-.hijri-calendar {
-    padding-left: 0.25rem;
-}
-
 .time__features {
     font-family: "vazir-bold";
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: var(--time-weather-secondary-color);
-}
-
-.features__timer,
-.features__oghat {
-    padding: 0.25rem 0.5rem;
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: var(--time-weather-secondary-color);
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    gap: 2px;
+    direction: ltr;
 }
 
 @media (min-width: 360px) and (max-width: 1025px) {
@@ -152,19 +155,18 @@
     }
 
     .time__clock {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .jalali-calendar {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .other-calendars-wrapper {
         font-size: 0.7rem;
     }
 
-    .features__timer,
-    .features__oghat {
-        font-size: 1rem;
+    .time__features {
+        font-size: 0.8rem;
     }
 }
