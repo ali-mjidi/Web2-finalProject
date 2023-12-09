@@ -40,8 +40,28 @@ body {
 .nav {
     grid-row: 1/2;
     grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+    border-radius: 0;
     background-color: transparent;
-    border: 1px solid blue;
+}
+
+.setting,
+.user {
+    height: 100%;
+    aspect-ratio: 1;
+    display: block;
+    background: no-repeat center center / 80%;
+}
+
+.setting {
+    background-image: url("./../images/settings-icon.png");
+}
+
+.user {
+    background-image: url("./../images/user-icon.png");
 }
 
 a.reference {
