@@ -11,8 +11,8 @@ const hijriCalendarElement = document.querySelector(".hijri-calendar");
 window.addEventListener("load", async () => {
     const timeData = await getTimeData();
     const time = new Date(timeData);
-    const minute = toPersianNumber(time.getMinutes());
-    const hour = toPersianNumber(time.getHours());
+    let minute = time.getMinutes();
+    let hour = time.getHours();
     const [jalaliDay, jalaliMonth] = time
         .toLocaleDateString("fa-IR", {
             day: "numeric",
@@ -30,6 +30,9 @@ window.addEventListener("load", async () => {
         .split(" ")[0];
     const hijriDay = time.toLocaleDateString("ar-SA", { day: "2-digit" });
 
+    minute =
+        minute < 10 ? toPersianNumber("0" + minute) : toPersianNumber(minute);
+    hour = hour < 10 ? toPersianNumber("0" + hour) : toPersianNumber(hour);
     clockElement.innerText = `${hour}:${minute}`;
 
     jalaliCalendarElement.innerText = jalaliDay + " " + jalaliMonth;
