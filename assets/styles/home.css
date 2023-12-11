@@ -64,14 +64,6 @@ body {
     background-image: url("./../images/user-icon.png");
 }
 
-a.reference {
-    padding: 10px 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: dodgerblue;
-}
-
 @media (min-width: 360px) and (max-width: 1025px) {
     .container {
         height: auto;
