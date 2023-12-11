@@ -5,6 +5,7 @@ const taskAddInput = document.querySelector(".add-task__input");
 const taskAddBtn = document.querySelector(".add-task__btn");
 let tasksArray;
 
+// checks that local storage is empty or not
 if (localStorage.getItem("tasks")) {
     tasksArray = JSON.parse(localStorage.getItem("tasks"));
 } else {
@@ -20,6 +21,7 @@ const saveToLocalStorage = () =>
 
 // ---------------------------------------------------------------- process
 window.addEventListener("load", () => {
+    // reset todo-list elements on page load
     tasksListElement.innerHTML = "";
     taskAddInput.value = "";
 
@@ -37,10 +39,11 @@ taskAddForm.addEventListener("submit", e => {
     if (taskTitle) {
         taskAddInput.value = "";
 
+        // if i want to use createTaskElementHtml() function i should work this way
         // tasksListElement.insertAdjacentHTML("afterbegin", createTaskElementHtml());
-
         // tasksListElement.prepend(createTaskElement(taskTitle))
 
+        // but because i choose createTaskElement() function this is the way
         addTask(taskTitle);
     } else {
         alert("Please insert some task :)");
@@ -68,6 +71,7 @@ function addTask(taskTitle) {
     saveToLocalStorage();
 }
 
+// this function creates a string of task element then we should add text to html
 function createTaskElementHtml(taskTitle = "test") {
     const task = `  <div class="task">
                         <input
@@ -87,6 +91,8 @@ function createTaskElementHtml(taskTitle = "test") {
     return task;
 }
 
+// this function creates element with js and add it to html 
+// (i choose this way except the other one)
 function createTaskElement(taskTitle) {
     taskElement = document.createElement("div");
     taskElement.classList.add("task");
