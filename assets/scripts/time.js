@@ -10,25 +10,33 @@ const hijriCalendarElement = document.querySelector(".hijri-calendar");
 // ---------------------------------------------------------------- process
 window.addEventListener("load", async () => {
     const timeData = await getTimeData();
-    const time = new Date(timeData);
-    let minute = time.getMinutes();
-    let hour = time.getHours();
+    const time = new Date(timeData); // create date from given milliseconds
+
+    // jalali date
     const [jalaliDay, jalaliMonth] = time
         .toLocaleDateString("fa-IR", {
             day: "numeric",
             month: "long",
         })
         .split(" ");
+
+    // gregorian date
     const gregorianYear = toPersianNumber(time.getFullYear());
     const gregorianMonth = time.toLocaleDateString("default", {
         month: "short",
     });
     const gregorianDay = toPersianNumber(time.getDate());
+
+    // hijri date
     const hijriMonth = time.toLocaleDateString("ar-SA", { month: "long" });
     const hijriYear = time
         .toLocaleDateString("ar-SA", { year: "numeric" })
         .split(" ")[0];
     const hijriDay = time.toLocaleDateString("ar-SA", { day: "2-digit" });
+
+    // time
+    let minute = time.getMinutes();
+    let hour = time.getHours();
 
     // ----------------------------------------------------------- functions
     const convertMinuteToPersian = () =>
@@ -42,17 +50,25 @@ window.addEventListener("load", async () => {
             hour < 10 ? toPersianNumber("0" + hour) : toPersianNumber(hour));
 
     const increaseHour = function () {
+        // reset minute to zero
         minute = 0;
+
+        // convert to english number, so then we can do mathematical operations
         hour = +toEnglishNumber(hour);
         hour++;
         hour >= 24 ? (hour = 0) : null;
+
+        // then we change it back to persian
         convertHourToPersian();
     };
 
     const increaseMinute = function () {
+        // convert to english number, so then we can do mathematical operations
         minute = +toEnglishNumber(minute);
         minute++;
         minute >= 60 && increaseHour();
+
+        // then we change it back to persian
         convertMinuteToPersian();
         clockElement.innerText = `${hour}:${minute}`;
     };
@@ -63,21 +79,24 @@ window.addEventListener("load", async () => {
 
     jalaliCalendarElement.innerText = jalaliDay + " " + jalaliMonth;
 
+    // creates a string of gregorian day, month and year and put it on element
     gregorianCalendarElement.innerText = [
         gregorianYear,
         gregorianMonth,
         gregorianDay,
     ].join("/");
 
+    // creates a string of hijri day, month and year and put it on element
     hijriCalendarElement.innerText = [hijriYear, hijriMonth, hijriDay].join(
         "/"
     );
 
+    // this timeout starts after minute actually increased
     setTimeout(() => {
         increaseMinute();
-        setInterval(() => {
-            increaseMinute();
-        }, 60000);
+
+        // this interval works every 60 seconds
+        setInterval(increaseMinute, 60000);
     }, (60 - time.getSeconds()) * 1000);
 });
 
