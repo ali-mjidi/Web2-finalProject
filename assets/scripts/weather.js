@@ -12,6 +12,7 @@ const weatherIcon = document.querySelector(".weather__icon");
 // ----------------------------------------------------------------- inputs
 window.addEventListener("load", async () => {
     const weatherData = await getWeatherData();
+    // extract wanted data from given data
     const {
         current,
         max,
@@ -29,11 +30,14 @@ window.addEventListener("load", async () => {
     weatherStatus.innerText = text + " " + emoji;
 
     newImageSrc = weatherIcon.src;
+    // remove previous file name from last of image source
     newImageSrc = newImageSrc.slice(0, newImageSrc.lastIndexOf("/") + 1);
+    // add new image file name to end of image source
     newImageSrc += icon + ".svg";
 
     weatherIcon.src = newImageSrc;
 
+    // change text color to given color from api
     currentTemperature.style.setProperty(
         "--weather-temperature-color",
         textColor
