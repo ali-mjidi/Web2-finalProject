@@ -150,10 +150,7 @@
         font-size: 1rem;
     }
 
-    .weather__temperature {
-        font-size: 2.5rem;
-    }
-
+    .weather__temperature,
     .time__clock {
         font-size: 2rem;
     }
