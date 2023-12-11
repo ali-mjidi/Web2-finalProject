@@ -1,12 +1,16 @@
 const persianNumbers = "۰۱۲۳۴۵۶۷۸۹".split("");
 function toPersianNumber(number) {
-    number = String(number);
-    number = number.split("");
-    for (let char of number) {
-        number[number.indexOf(char)] = persianNumbers[char];
-    }
+    if (isNaN(number)) {
+        return number;
+    } else {
+        number = String(number);
+        number = number.split("");
+        for (let char of number) {
+            number[number.indexOf(char)] = persianNumbers[char];
+        }
 
-    return number.join("");
+        return number.join("");
+    }
 }
 
 function toEnglishNumber(number) {
