@@ -30,9 +30,35 @@ window.addEventListener("load", async () => {
         .split(" ")[0];
     const hijriDay = time.toLocaleDateString("ar-SA", { day: "2-digit" });
 
-    minute =
-        minute < 10 ? toPersianNumber("0" + minute) : toPersianNumber(minute);
-    hour = hour < 10 ? toPersianNumber("0" + hour) : toPersianNumber(hour);
+    // ----------------------------------------------------------- functions
+    const convertMinuteToPersian = () =>
+        (minute =
+            minute < 10
+                ? toPersianNumber("0" + minute)
+                : toPersianNumber(minute));
+
+    const convertHourToPersian = () =>
+        (hour =
+            hour < 10 ? toPersianNumber("0" + hour) : toPersianNumber(hour));
+
+    const increaseHour = function () {
+        minute = 0;
+        hour = +toEnglishNumber(hour);
+        hour++;
+        hour >= 24 ? (hour = 0) : null;
+        convertHourToPersian();
+    };
+
+    const increaseMinute = function () {
+        minute = +toEnglishNumber(minute);
+        minute++;
+        minute >= 60 && increaseHour();
+        convertMinuteToPersian();
+        clockElement.innerText = `${hour}:${minute}`;
+    };
+
+    convertMinuteToPersian();
+    convertHourToPersian();
     clockElement.innerText = `${hour}:${minute}`;
 
     jalaliCalendarElement.innerText = jalaliDay + " " + jalaliMonth;
@@ -46,6 +72,13 @@ window.addEventListener("load", async () => {
     hijriCalendarElement.innerText = [hijriYear, hijriMonth, hijriDay].join(
         "/"
     );
+
+    setTimeout(() => {
+        increaseMinute();
+        setInterval(() => {
+            increaseMinute();
+        }, 60000);
+    }, (60 - time.getSeconds()) * 1000);
 });
 
 // -------------------------------------------------------------- functions
